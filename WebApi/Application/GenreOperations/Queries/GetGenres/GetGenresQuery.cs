@@ -1,0 +1,30 @@
+using WebApi.DBOperations;
+using AutoMapper;
+using System.Collections;
+
+namespace WebApi.Application.GenreOperations.Queries.GetGenres
+{
+    public class GetGenresQuery
+    {
+        public readonly IBookStoreDbContext _context;
+        public readonly IMapper _mapper;
+        public GetGenresQuery(IBookStoreDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public List<GenresViewModel> Handle()
+        {
+            var genres = _context.Genres.Where(x=>x.IsActive).OrderBy(x=>x.Id); //Genrelerimi DB'den çekicem.
+            List<GenresViewModel> returnObj = _mapper.Map<List<GenresViewModel>>(genres);
+            return returnObj;
+        }
+    }
+
+    public class GenresViewModel
+    {
+        public int Id {get;set;}
+        public string Name {get;set;}
+    }
+}
