@@ -61,6 +61,11 @@ namespace WebApi
             app.UseAuthorization();
 
             app.UseCustomExceptionMiddle();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
 
        

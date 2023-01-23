@@ -1,12 +1,12 @@
 using WebApi.DBOperations;
-using WebAp.Entities;
+using WebApi.Entities;
 using System;
 
-namespace TestSetuo
+namespace TestSetup
 {
     public static class Books 
     {
-        public static void AddBooks(this BookStoreDbContext context)
+        public static void AddBooks(this BookStoreDBContext context)
         {
             context.Books.AddRange
             (

@@ -1,6 +1,7 @@
 using WebApi.DBOperations;
 using AutoMapper; 
 using Microsoft.EntityFrameworkCore;
+using WebApi.Common;
 
 namespace TestSetup
 {
@@ -10,7 +11,7 @@ namespace TestSetup
         public IMapper Mapper {get;set;}
         public CommonTestFixture()
         {
-            var options = new DbContextOptionsBuilder<BookStoreDbContext>().UseInMemoryDatabase(databaseName:"BookStoreTestDB").Options;
+            var options = new DbContextOptionsBuilder<BookStoreDBContext>().UseInMemoryDatabase(databaseName:"BookStoreTestDB").Options;
             Context = new BookStoreDBContext(options);
             Context.Database.EnsureCreated();
             Context.AddBooks();
